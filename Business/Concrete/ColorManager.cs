@@ -41,10 +41,10 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<List<Color>>(Messages.Maintenance);
             }
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll());
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(),Messages.GetAll);
         }
 
-        public IResult update(Color color)
+        public IResult Update(Color color)
         {
             _colorDal.Update(color);
             return new SuccessResult(Messages.Updated);

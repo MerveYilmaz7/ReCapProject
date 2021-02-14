@@ -31,12 +31,13 @@ namespace Business.Concrete
 
         public IResult Delete(Car car)
         {
-            _carDal.Delete(car);
+           
             return new SuccessResult(Messages.Deleted);
         }
 
         public IDataResult<Car> Get(int Id)
         {
+           
             return new SuccessDataResult<Car>(_carDal.Get(c=>c.Id==Id));
         }
 
@@ -54,10 +55,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetDetailsAll(),Messages.CarDetailDto);
         }
 
-        public IResult update(Car car)
+        public IResult Update(Car car)
         {
             _carDal.Update(car);
-            return new SuccessResult();
+            return new SuccessResult(Messages.Updated);
         }
     }
 }

@@ -44,7 +44,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),Messages.GetAll);
         }
 
-        public IResult update(Brand brand)
+        public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
             return new SuccessResult(Messages.Updated);

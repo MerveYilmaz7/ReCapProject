@@ -27,7 +27,7 @@ namespace Business.Concrete
         public IResult Delete(User user)
         {
             _userDal.Delete(user);
-            return new SuccessResult(Messages.Added);
+            return new SuccessResult(Messages.Deleted);
         }
 
         public IDataResult<List<User>> GetAll()
@@ -37,7 +37,7 @@ namespace Business.Concrete
 
         public IDataResult<User> Get(int Id)
         {
-           return new SuccessDataResult<User>(_userDal.Get(u=>u.UserId==Id));
+           return new SuccessDataResult<User>(_userDal.Get(u=>u.UserId==Id),Messages.GetId);
         }
 
         public IResult Update(User user)

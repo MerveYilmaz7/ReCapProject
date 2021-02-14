@@ -15,5 +15,6 @@ namespace Business.Constants
         public static string Maintenance="Sistem Bakımdadır.";
         public static string GetId = "Id'ye Ait Bilgi Getirildi.";
         public static string ReturnDateError = "Seçmiş olduğunuz araba bir başkası tarafından kiralanmıştır. ";
+        public static string Error = "İşlem Başarısız";
     }
 }
