@@ -16,5 +16,11 @@ namespace Business.Constants
         public static string GetId = "Id'ye Ait Bilgi Getirildi.";
         public static string ReturnDateError = "Seçmiş olduğunuz araba bir başkası tarafından kiralanmıştır. ";
         public static string Error = "İşlem Başarısız";
+        public static string CheckIfBrandCarCountOfBrandCorrectError = "Bu markada en fazla 15 ürün olabilir.";
+        public static string CheckIfCarNameExistsError = "Aynı isimde bir araba mevcut";
+
+        public static string CheckIfBrandLimitExcededError = "Bu markada araba sayısı 15'i geçmiş olduğundan araba eklenemiyor.";
+
+        public static string CarImageCountError = "Araba görseli en az 5 olmalıdır.";
     }
 }
