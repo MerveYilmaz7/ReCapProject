@@ -18,9 +18,14 @@ namespace Business.Constants
         public static string Error = "İşlem Başarısız";
         public static string CheckIfBrandCarCountOfBrandCorrectError = "Bu markada en fazla 15 ürün olabilir.";
         public static string CheckIfCarNameExistsError = "Aynı isimde bir araba mevcut";
-
         public static string CheckIfBrandLimitExcededError = "Bu markada araba sayısı 15'i geçmiş olduğundan araba eklenemiyor.";
-
         public static string CarImageCountError = "Araba görseli en az 5 olmalıdır.";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
+        public static string PasswordError = "Şifre hatalı";
+        public static string SuccessfulLogin = "Sisteme giriş başarılı";
+        public static string UserAlreadyExists = "Bu kullanıcı zaten mevcut";
+        public static string UserRegistered = "Kullanıcı başarıyla kaydedildi";
+        public static string AccessTokenCreated = "Access token başarıyla oluşturuldu";
+        public static string AuthorizationDenied = "Yetkiniz yok";
     }
 }

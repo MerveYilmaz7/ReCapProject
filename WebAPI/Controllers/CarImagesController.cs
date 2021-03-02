@@ -72,7 +72,7 @@ namespace WebAPI.Controllers
             var result = _carImageService.Add(new CarImage
             {
                 CarId = carImage.CarId,
-                Date = DateTime.Now,
+                ImageDate = DateTime.Now,
                 ImagePath = newGuidPath
             });
 
@@ -110,7 +110,7 @@ namespace WebAPI.Controllers
             System.IO.File.Move(updateImagePath, newGuidPath);
 
             carImage.ImagePath = newGuid;
-            carImage.Date = DateTime.Now;
+            carImage.ImageDate = DateTime.Now;
             var result = _carImageService.Update(carImage);
 
 
