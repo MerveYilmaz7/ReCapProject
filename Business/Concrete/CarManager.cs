@@ -2,6 +2,9 @@
 using Business.BusinessAspect.Autofac;
 using Business.Constants;
 using Business.ValidationRules.Validation;
+using Core.Aspects.Autofac.Cache;
+using Core.Aspects.Autofac.Performance;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Business;
@@ -26,8 +29,9 @@ namespace Business.Concrete
             _brandService = brandService;
         }
 
-        [SecuredOperation("product.add,admin")]
+        [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
             IResult result = BusinessRules.Run(CheckIfBrandCarCountOfBrandCorrect(car.BrandId), CheckIfCarNameExists(car.CarName), CheckIfBrandLimitExceded());
@@ -51,6 +55,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(c=>c.Id==Id));
         }
 
+        [PerformanceAspect(5)]
         public IDataResult<List<Car>> GetAll()
         {
             if (DateTime.Now.Day==12)
@@ -65,6 +70,8 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetDetailsAll(),Messages.CarDetailDto);
         }
 
+        [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
             _carDal.Update(car);
@@ -99,5 +106,12 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        [TransactionScopeAspect]
+        public IResult AddTransactionalTest(Car car)
+        {
+            _carDal.Update(car);
+            _carDal.Add(car);
+            return new SuccessResult(Messages.CarUpdated);
+        }
     }
 }
